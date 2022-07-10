@@ -1,4 +1,4 @@
-pragma solidity  ^0.5.0.0;
+pragma solidity  ^0.8.0.0;
 
 contract EthBnb {
   
@@ -23,9 +23,9 @@ contract EthBnb {
     for (uint i=0; i<8; i++) {
         flatDB[i].flatIsAvailable = true;
         if (i % 2 == 0) {
-            flatDB[i].priceInWei = 0.1 ether;
-        } else {
             flatDB[i].priceInWei = 0.2 ether;
+        } else {
+            flatDB[i].priceInWei = 0.1 ether;
         }
     }
   }
