@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity  ^0.8.0.0;
 
 contract EthBnb {
@@ -18,8 +19,8 @@ contract EthBnb {
     _;
   }
 
-  constructor() public {
-    landlordAddress = msg.sender;
+  constructor() {
+    landlordAddress = payable(msg.sender);
     for (uint i=0; i<8; i++) {
         flatDB[i].flatIsAvailable = true;
         if (i % 2 == 0) {
@@ -54,7 +55,7 @@ contract EthBnb {
   }
 
   function rentAFlat(uint8 _flat) public payable returns (uint256) {
-    tenentAddress = msg.sender;
+    tenentAddress = payable(msg.sender);
     if(msg.value > 0 && flatDB[_flat].flatIsAvailable == true && msg.value % flatDB[_flat].priceInWei == 0) {
       uint256 nightsPaidFor = msg.value % flatDB[_flat].priceInWei;
       flatDB[_flat].flatIsAvailable = false;
